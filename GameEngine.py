@@ -1,7 +1,7 @@
 class GameEngine:
-    __NUMBEROFVEGGIES = 30
-    __NUMBEROFRABBITS = 5
-    __HIGHSCOREPROFILE = "highscore.data"
+    _NUMBEROFVEGGIES = 30
+    _NUMBEROFRABBITS = 5
+    HIGHSCOREPROFILE = "highscore.data"
 
     def __init__(self):
             self.field = []
@@ -12,6 +12,7 @@ class GameEngine:
 
     def initVeggies(self):
         # TODO: Initialize vegetables
+        
         pass
 
     def initCaptain(self):
