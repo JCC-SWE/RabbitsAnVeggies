@@ -1,3 +1,8 @@
+import random
+
+from Captain import Captain
+
+
 class GameEngine:
     _NUMBEROFVEGGIES = 30
     _NUMBEROFRABBITS = 5
@@ -16,8 +21,12 @@ class GameEngine:
         pass
 
     def initCaptain(self):
-        # TODO: Initialize Captain
-        pass
+        while True:
+            x, y = random.randint(0, len(self.field) - 1), random.randint(0, len(self.field[0]) - 1)
+            if self.field[x][y] is None:
+                self.captain = Captain('V', x, y, [])
+                self.field[x][y] = self.captain
+                break
 
     def initRabbits(self):
         # TODO: Initialize rabbits
@@ -40,8 +49,7 @@ class GameEngine:
         pass
 
     def getScore(self):
-        # TODO: Get current score
-        pass
+        return self.score
 
     def moveRabbits(self):
         # TODO: Move rabbits
