@@ -1,3 +1,4 @@
+import pickle
 import random
 
 from Captain import Captain
@@ -64,13 +65,47 @@ class GameEngine:
         pass
 
     def moveCaptain(self):
-        # TODO: Move Captain
-        pass
+        movement = input("Would you like to move up(W), down(S), left(A), or right(D): ").strip().lower()
+        if movement == 'w':
+            self.moveCptVertical(-1)  
+        elif movement == 's':
+            self.moveCptVertical(1)  
+        elif movement == 'a':
+            self.moveCptHorizontal(-1) 
+        elif movement == 'd':
+            self.moveCptHorizontal(1) 
+        else:
+            print(f"{movement} is not a valid option")
 
     def gameOver(self):
-        # TODO: Game over functionality
-        pass
+        print("GAME OVER!")
+        print("VYou managed to harvest the following vegetables:")
+        for veg in self.captain.getVeggieList():
+            print(veg.getName())
+        
+        print(f"Your score was: {self.score}")
 
     def highScore(self):
-        # TODO: High score functionality
-        pass
+        # Load existing high scores
+        try:
+            with open(self.__HIGHSCOREPROFILE, 'rb') as file:
+                high_scores = pickle.load(file)
+        except (FileNotFoundError, EOFError):
+            high_scores = []
+
+        # Get player's initials
+        initials = input("Please enter your three initials to go on the scoreboard: ")[:3]
+
+        # Update high scores
+        high_scores.append((initials, self.score))
+        high_scores.sort(key=lambda x: x[1], reverse=True)
+
+        # Display high scores
+        print("HIGH SCORES")
+        print("Name\tScore")
+        for name, score in high_scores:
+            print(f"{name}\t\t{score}")
+
+        # Save updated high scores
+        with open(self.__HIGHSCOREPROFILE, 'wb') as file:
+            pickle.dump(high_scores, file)
