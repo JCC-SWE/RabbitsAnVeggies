@@ -1,53 +1,41 @@
-import pickle
 from GameEngine import GameEngine
 
-def loadHighScores(filename):
-    try:
-        with open(filename, 'rb') as data:
-            return pickle.load(data)
-    except FileNotFoundError:
-        return []
-
-def saveHighScores(file, highScores):
-    with open(file, 'wb') as data:
-        pickle.dump(highScores, data)
-
-def updateHighScores(highScores, user, score):
-    highScores.append((user, score))
-    highScores.sort(key=lambda x: x[1], reverse=True)  # Assuming the second element is the score
-    return highScores
-
-def printHighScores(highScores):
-    print("High Scores:")
-    for user, score in highScores:
-        print(f"{user}: {score}")
-
 def main():
-    # Load high scores
-    highScores = loadHighScores(GameEngine.__HIGHSCOREPROFILE)
+    # Instantiate a GameEngine object
+    game_engine = GameEngine()
 
-    # Game initialization
-    game = GameEngine()
-    game.initializeGame()
-    game.intro()
+    # Initialize the game
+    game_engine.initializeGame()
 
-    # Main game loop
-    while game.remainingVeggies() > 0:
-        print(f"Remaining Vegetables: {game.remainingVeggies()}, Score: {game.getScore()}")
-        game.printField()
-        game.moveRabbits()
-        game.moveCptVertical()  # Assuming this is the method to move the captain
+    # Display game introduction
+    game_engine.intro()
 
-    # Game Over
-    print("Game Over!")
+    # Initialize the number of remaining vegetables
+    remaining_veggies = game_engine.remainingVeggies()
 
-    # Handle High Scores
-    user = input("Enter your initials: ")[:3].upper()
-    score = game.getScore()
-    highScores = updateHighScores(highScores, user, score)
-    printHighScores(highScores)
-    saveHighScores(GameEngine.HIGHSCOREPROFILE, highScores)
+    # Game loop
+    while remaining_veggies > 0:
+        # Print the field
+        game_engine.printField()
 
-main()
+        # Move the rabbits
+        game_engine.moveRabbits()
 
+        # Move the captain
+        game_engine.moveCaptain()
 
+        # Determine the new number of remaining vegetables
+        remaining_veggies = game_engine.remainingVeggies()
+
+    # Display Game Over information
+    game_engine.gameOver()
+
+    # Handle High Score functionality
+    game_engine.highScore()
+
+if __name__ == "__main__":
+    main()
+    
+    
+    
+#  VeggieFile1.csv

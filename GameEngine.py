@@ -8,9 +8,9 @@ from Captain import Captain
 
 
 class GameEngine:
-    _NUMBEROFVEGGIES = 30
-    _NUMBEROFRABBITS = 5
-    HIGHSCOREPROFILE = "highscore.data"
+    __NUMBEROFVEGGIES = 30
+    __NUMBEROFRABBITS = 5
+    __HIGHSCOREPROFILE = "highscore.data"
 
     def __init__(self):
             self.field = []
