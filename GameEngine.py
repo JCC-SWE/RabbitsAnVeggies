@@ -100,28 +100,68 @@ class GameEngine:
         self.initRabbits()
     
 
-    def initializeGame(self):
-        # TODO: Initialize the game
-        pass
-
     def remainingVeggies(self):
-        # TODO: Count remaining vegetables
-        pass
+        # return sum(1 for row in self.field for item in row if isinstance(item, Veggie))    
+        count = 0
+        for row in self.field:
+            for cell in row:
+                if isinstance(cell, Veggie):
+                    count += 1
+        return count
 
     def intro(self):
-        # TODO: Game introduction
-        pass
+        print('''
+    Welcome to Captain Veggie!
+    The rabbits have invaded your garden and you must harvest
+    as many vegetables as possible before the rabbits eat them
+    all! Each vegetable is worth a different number of points
+    so go for the high score!
+        ''')
+        print("The vegetables are:")
+        for veg in self.vegetables:
+            print(f"{veg.getWho()}: {veg.getName()} {veg.getPoints()} Points")
+        print("\nCaptain Veggie is V, and the rabbits are R's.")
+        print("\nGood luck!")
 
     def printField(self):
-        # TODO: Print the field
-        pass
+        # Display remaining vegetables and current score
+        remaining_veggies = self.remainingVeggies()
+        print(f"{remaining_veggies} veggies remaining. Current score: {self.score}")
+
+        # top border
+        border = '#' * (3 * len(self.field[0]) + 2)  # Adjust border length to account for extra spaces
+        print(border)
+
+        # Print field with border and two spaces between elements
+        for row in self.field:
+            row_str = '#'
+            for cell in row:
+                if cell is None:
+                    row_str += '   '  # Three spaces for empty cell to align with two spaces after symbols
+                else:
+                    row_str += ' ' + cell.getWho() + ' '  # Symbol with two spaces after it
+            row_str += '#'
+            print(row_str)
+
+        # bottom border
+        print(border)
 
     def getScore(self):
         return self.score
 
     def moveRabbits(self):
-        # TODO: Move rabbits
-        pass
+        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1), (0, 0)]
+        for rabbit in self.rabbits:
+            dx, dy = random.choice(directions)
+            new_x, new_y = rabbit.getX() + dx, rabbit.getY() + dy
+            if 0 <= new_x < len(self.field) and 0 <= new_y < len(self.field[0]):
+                # Check if new position is within bounds and not occupied by another rabbit
+                if self.field[new_x][new_y] is None or isinstance(self.field[new_x][new_y], Veggie):
+                    # Move rabbit to the new position and remove it from old position
+                    self.field[rabbit.getX()][rabbit.getY()] = None
+                    rabbit.setX(new_x)
+                    rabbit.setY(new_y)
+                    self.field[new_x][new_y] = rabbit
 
     def moveCptVertical(self, movement):
         # TODO: Move Captain vertically
@@ -176,3 +216,4 @@ class GameEngine:
         # Save updated high scores
         with open(self.__HIGHSCOREPROFILE, 'wb') as file:
             pickle.dump(high_scores, file)
+
