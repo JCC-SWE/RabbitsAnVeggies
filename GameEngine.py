@@ -164,12 +164,20 @@ class GameEngine:
                     self.field[new_x][new_y] = rabbit
 
     def moveCptVertical(self, movement):
-        # TODO: Move Captain vertically
-        pass
+        new_x = self.captain.getX() + movement
+        current_y = self.captain.getY()
+        if 0 <= new_x < len(self.field):
+            self._moveCaptainTo(new_x, current_y)
+        else:
+            print("You can't move that way!")
 
     def moveCptHorizontal(self, movement):
-        # TODO: Move Captain horizontally
-        pass
+        new_y = self.captain.getY() + movement
+        current_x = self.captain.getX()
+        if 0 <= new_y < len(self.field[0]):
+            self._moveCaptainTo(current_x, new_y)
+        else:
+            print("You can't move that way!")
 
     def moveCaptain(self):
         movement = input("Would you like to move up(W), down(S), left(A), or right(D): ").strip().lower()
@@ -216,4 +224,22 @@ class GameEngine:
         # Save updated high scores
         with open(self.__HIGHSCOREPROFILE, 'wb') as file:
             pickle.dump(high_scores, file)
+            
+    def _moveCaptainTo(self, new_x, new_y):
+         # If the Rabbit had the position occupied
+        if isinstance(self.field[new_x][new_y], Rabbit):
+            print("Don't step on the bunnies!")
+            return
+        
+        # If the Veggie had a position occupied
+        if isinstance(self.field[new_x][new_y], Veggie):
+            veggie = self.field[new_x][new_y]
+            print(f"Yummy! A delicious {veggie.getName()}!")
+            self.captain.addVeggie(veggie)  
+            self.score += veggie.getPoints()
+
+        self.field[self.captain.getX()][self.captain.getY()] = None 
+        self.captain.setX(new_x)  
+        self.captain.setY(new_y)  
+        self.field[new_x][new_y] = self.captain
 
