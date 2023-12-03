@@ -34,13 +34,6 @@ class Veggie(FieldInhabitant):
         return f'Name: {self.__name}\nSymbol: {self._who}\nPoints: {self.__points}'
 
 
-veg = Veggie("Yosh2", "c2", 9)
-
-print(veg.getName())
-print(veg.getWho())
-print(veg.getPoints())
-print(veg)
-        
 
     
 

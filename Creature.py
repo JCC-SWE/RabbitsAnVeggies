@@ -30,8 +30,6 @@ class Creature(FieldInhabitant):
         self.__y = y
 
 
-creature = Creature('c', 5, 9)
-print(creature.getX())
-print(creature.getY())
+
 
 
