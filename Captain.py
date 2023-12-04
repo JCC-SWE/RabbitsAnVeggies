@@ -15,6 +15,9 @@ class Captain(Creature):
     # Method to add a vegetable to the __vegList
     def addVeggie(self, veg):
         self.__vegList.append(veg)
+        
+    def getVeggieList(self):
+        return self.__vegList
 
 
 
