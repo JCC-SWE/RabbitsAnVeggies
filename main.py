@@ -23,6 +23,9 @@ def main():
 
         # Move the captain
         game_engine.moveCaptain()
+        
+        # Move the snake
+        game_engine.moveSnake()
 
         # Determine the new number of remaining vegetables
         remaining_veggies = game_engine.remainingVeggies()
@@ -35,7 +38,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-    
-    
-#  VeggieFile1.csv
+
