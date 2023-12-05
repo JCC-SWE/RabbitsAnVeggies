@@ -6,8 +6,8 @@ from Creature import Creature
 class Rabbit(Creature):
 
     # Constructor method for Rabbit class
-    def __init__(self, who, x, y):
+    def __init__(self, x, y):
         # Call the constructor of the parent class (Creature)
-        super().__init__(who, x, y)
+        super().__init__("R", x, y)
 
 

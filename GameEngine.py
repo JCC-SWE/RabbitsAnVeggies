@@ -59,11 +59,9 @@ class GameEngine:
         while not os.path.exists(veggie_file_name):
             veggie_file_name = input(f"{veggie_file_name} does not exist! Please enter the name of the vegetable point file: ")
 
-        # Open and read the veggie file
         with open(veggie_file_name, 'r') as file:
             lines = file.readlines()
 
-        # Initialize field with the size specified in the first line
         field_size = tuple(map(int, lines[0].strip().split(',')[1:]))
         self.field = [[None for _ in range(field_size[1])] for _ in range(field_size[0])]
 
@@ -96,7 +94,7 @@ class GameEngine:
         while True:
             x, y = random.randint(0, len(self.field) - 1), random.randint(0, len(self.field[0]) - 1)
             if self.field[x][y] is None:
-                self.captain = Captain('V', x, y, [])
+                self.captain = Captain(x, y, [])
                 self.field[x][y] = self.captain
                 break
 
@@ -111,14 +109,11 @@ class GameEngine:
         """
         # Loop for number of rabbits
         for _ in range(self.__NUMBEROFRABBITS):
-            # try until rabbit is placed
             while True:
                 x, y = random.randint(0, len(self.field) - 1), random.randint(0, len(self.field[0]) - 1)
                 if self.field[x][y] is None:
-                    # Create new rabbit
-                    rabbit = Rabbit('R', x, y)
+                    rabbit = Rabbit(x, y)
                     self.rabbits.append(rabbit)
-                    # Place rabbit on field
                     self.field[x][y] = rabbit
                     break
 
@@ -210,9 +205,7 @@ class GameEngine:
             dx, dy = random.choice(directions)
             new_x, new_y = rabbit.getX() + dx, rabbit.getY() + dy
             if 0 <= new_x < len(self.field) and 0 <= new_y < len(self.field[0]):
-                # Check if new position is within bounds and not occupied by another rabbit
                 if self.field[new_x][new_y] is None or isinstance(self.field[new_x][new_y], Veggie):
-                    # Move rabbit to the new position and remove it from old position
                     self.field[rabbit.getX()][rabbit.getY()] = None
                     rabbit.setX(new_x)
                     rabbit.setY(new_y)
@@ -384,7 +377,6 @@ class GameEngine:
         # Check if the new position is valid, snake should be in the feild and not go out 
         if 0 <= newX < len(self.field) and 0 <= newY < len(self.field[0]):
             if self.field[newX][newY] is None:
-                # Move the snake
                 self.field[snakeX][snakeY] = None
                 self.snake.setX(newX)
                 self.snake.setY(newY)
