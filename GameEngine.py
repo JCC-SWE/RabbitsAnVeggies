@@ -152,7 +152,7 @@ class GameEngine:
         print("The rabbits have invaded your garden and you must harvest as many vegetables as possible before the rabbits eat them all! Each vegetable is worth a different number of points so go for the high score!")
         print("\nThe vegetables are:")
         for veg in self.vegetables:
-            print(f"{veg.getWho()}: {veg.getName()} {veg.getPoints()} Points")
+            print(f"{veg._str_()}")
         print("\nCaptain Veggie is V, and the rabbits are R's.")
         print("\nGood luck!")
 

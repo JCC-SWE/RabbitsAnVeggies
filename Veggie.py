@@ -31,7 +31,7 @@ class Veggie(FieldInhabitant):
 
     # Override the __str__ method to provide a string representation of the Veggie object
     def __str__(self):
-        return f'Name: {self.__name}\nSymbol: {self._who}\nPoints: {self.__points}'
+        return f'{self.getWho()}: {self.getName()} {self.getPoints()} Points'
 
 
 
