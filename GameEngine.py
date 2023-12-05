@@ -1,3 +1,8 @@
+# Author: Josh Cubero, Aman Patel, Vatsal Patel
+# Date: 5/12/2023
+# Description: This file creates the GameEngine class. This is the mega class where all of the logic in the
+# game takes place. Here all objects are instantiated: veggies, rabbits, snake, and field.
+
 import pickle
 import random
 import os

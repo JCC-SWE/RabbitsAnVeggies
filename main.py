@@ -1,3 +1,7 @@
+# Author: Josh Cubero, Aman Patel, Vatsal Patel
+# Date: 5/12/2023
+# Description: This file creates the main file in the game. Here, all objects come to life and the game ensues.
+
 from GameEngine import GameEngine
 
 def main():

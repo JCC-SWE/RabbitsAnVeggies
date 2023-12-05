@@ -1,4 +1,7 @@
 # Import the Creature class from the Creature module
+# Author: Josh Cubero, Aman Patel, Vatsal Patel
+# Date: 5/12/2023
+# Description: This file creates the Rabbit class, which is the nemesis to the Captain class.
 from Creature import Creature
 
 
