@@ -1,4 +1,7 @@
 # Create a class named FieldInhabitant
+# Author: Josh Cubero, Aman Patel, Vatsal Patel
+# Date: 5/12/2023
+# Description: This file creates the parent class for Creature and Captain.
 class FieldInhabitant:
     # Constructor method for FieldInhabitant class
     def __init__(self, who):

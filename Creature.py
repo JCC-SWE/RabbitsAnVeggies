@@ -1,4 +1,8 @@
 # Import the FieldInhabitant class from the FieldInhabitant module
+# Author: Josh Cubero, Aman Patel, Vatsal Patel
+# Date: 5/12/2023
+# Description: This file creates the Creature class, these are the objects that inhabit the field and are the nemesis
+# of the captian object.
 from FieldInhabitant import FieldInhabitant
 
 

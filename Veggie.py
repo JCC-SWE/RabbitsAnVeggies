@@ -1,4 +1,8 @@
 # Import the FieldInhabitant class from the FieldInhabitant module
+# Author: Josh Cubero, Aman Patel, Vatsal Patel
+# Date: 5/12/2023
+# Description: This file creates the Veggie class, which inherits from the FieldInhabitant class. Veggie is the object
+# that creatures are vying to obtain.
 from FieldInhabitant import FieldInhabitant
 
 
