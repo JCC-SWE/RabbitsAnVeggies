@@ -6,9 +6,9 @@ from Creature import Creature
 class Captain(Creature):
 
     # Constructor method for Captain class
-    def __init__(self, who, x, y, vegList):
+    def __init__(self, x, y, vegList):
         # Call the constructor of the parent class (Creature)
-        super().__init__(who, x, y)
+        super().__init__("V", x, y)
         # Initialize the __vegList instance variable with the provided list
         self.__vegList = vegList
 
