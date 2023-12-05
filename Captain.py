@@ -1,4 +1,3 @@
-# Import the Creature class from the Creature module
 # Author: Josh Cubero, Aman Patel, Vatsal Patel
 # Date: 5/12/2023
 # Description: This file creates the Captain class. Once instantiated, the captain is the first-person in the game.
