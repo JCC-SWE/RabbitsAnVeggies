@@ -1,4 +1,3 @@
-# Create a class named FieldInhabitant
 # Author: Josh Cubero, Aman Patel, Vatsal Patel
 # Date: 5/12/2023
 # Description: This file creates the parent class for Creature and Captain.
