@@ -348,7 +348,7 @@ class GameEngine:
         # If the Veggie had a position occupied
         if isinstance(self.field[newX][newY], Veggie):
             veggie = self.field[newX][newY]
-            print(f"Yummy! A delicious {veggie.getName()}!")
+            print(f"Yummy! A delicious {veggie.getName()}")
             self.captain.addVeggie(veggie)  
             self.score += veggie.getPoints()
 
