@@ -154,11 +154,11 @@ class GameEngine:
 
     def intro(self):
         print("Welcome to Captain Veggie!")
-        print("The rabbits have invaded your garden and you must harvest as many vegetables as possible before the rabbits eat them all! Each vegetable is worth a different number of points so go for the high score!")
+        print("The rabbits have invaded your garden and you must harvest as many vegetables as possible before the rabbits eat them all! Each vegetable is worth a different number of points so go for the high score! A snake have also invaded the field, if it bites Captain, Captain loses last 5 veggies from the basket.")
         print("\nThe vegetables are:")
         for veg in self.vegetables:
             print(f"{veg.__str__()}")
-        print("\nCaptain Veggie is V, and the rabbits are R's.")
+        print("\nCaptain Veggie is V, the Snake is S, and the rabbits are R's.")
         print("\nGood luck!")
 
     def printField(self):
@@ -314,7 +314,7 @@ class GameEngine:
         initials = input("Please enter your three initials to go on the scoreboard: ")[:3]
 
         # Update high scores
-        highScores.append((initials, self.score))
+        highScores.append((initials.upper(), self.score))
         highScores.sort(key=lambda x: x[1], reverse=True)
 
         # Display high scores
